@@ -1,1 +1,2 @@
-export type * from "./Handbook";
+export type * from "./Document";
+export type * from "./Person";

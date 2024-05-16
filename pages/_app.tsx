@@ -1,11 +1,11 @@
 // pages/_app.tsx
-import '../styles/tailwind.css'
-import '@mantine/core/styles.css';
-import Layout from '../components/Layout'
-import { ApolloProvider } from '@apollo/client'
-import { MantineProvider } from '@mantine/core';
-import type { AppProps } from 'next/app'
-import apolloClient from '../lib/apollo'
+import "../styles/tailwind.css";
+import "@mantine/core/styles.css";
+import { ApolloProvider } from "@apollo/client";
+import { MantineProvider } from "@mantine/core";
+import type { AppProps } from "next/app";
+import { Layout } from "../components/Layout";
+import apolloClient from "../lib/apollo";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
       </ApolloProvider>
     </MantineProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
