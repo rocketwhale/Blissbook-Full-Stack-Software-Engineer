@@ -10,6 +10,8 @@ Run the following commands
 
 Open your browser to http://localhost:3000/
 
+To run the automated testing suite, run `npm run test`
+
 ## Resources
 
 - Apollo GraphQL (client): https://www.apollographql.com/docs/react/
@@ -46,7 +48,7 @@ NOTE: You can import any libraries you want, but you must use React, GraphQL, Ty
   - Replace the ID field in the people table with an image for the person. *High Priority*
   - Users can optionally filter the people table by who is in the audience for a published document. *Medium Priority*
   - Users can sort the people table by name. *Medium Priority*
-  - Display the metadata fields in the people table *Medium Priority*
+  - Display the metadata fields in the people table. *Medium Priority*
 
 ### UX/Styling
 
