@@ -1,4 +1,4 @@
-# Blissbook Full-Stack Product Engineer Interview
+# Blissbook Full-Stack Software Engineer Challenge
 
 ## Getting started
 
@@ -23,13 +23,10 @@ To run the automated testing suite, run `npm run test`
 
 ## The Challenge
 
-Complete as many of these tasks as you can within 1-2 hours. It's okay if you don't complete them all! When you're done, please submit a Pull Request containing:
+Complete as many of these tasks as you can within 1-2 hours. It is okay if you don't complete them all! A couple of notes:
 
-  - A description of what you changed and *why*. *High Priority*
-  - How long you spent on the project. *High Priority*
-  - A suggestion for how to improve this codebase and/or challenge. *Medium Priority*
-
-NOTE: You can import any libraries you want, but you must use React, GraphQL, TypeScript and TailwindCSS.
+  - Some of the tasks are more important than others, so I've given each task a priority: low, medium, high.
+  - You can import any libraries you want, but you must use React, GraphQL, TypeScript and TailwindCSS.
 
 ### Problem Solving
 
@@ -57,3 +54,12 @@ NOTE: You can import any libraries you want, but you must use React, GraphQL, Ty
   - Debounce the search input to reduce the number of requests. *Low Priority*
   - Add a title to each page. *Low Priority*
 
+## Submission
+
+When you're done, fork this repository and submit a Pull Request to Blissbook. The Pull Request should include:
+
+  - A description of what you changed and *why*. *High Priority*
+  - How long you spent on the project. *High Priority*
+  - A suggestion for how to improve this codebase and/or challenge. *Medium Priority*
+
+Please submit the Pull Request by emailing a link to the Pull Request once you're ready for Blissbook to review it. If you'd prefer to keep the repository private, please add [me](https://github.com/SamDuvall) to the repository.
