@@ -8,7 +8,7 @@ generator pothos {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:qw4hd354495110@localhost:3306/blissbook_test_db"
+  url      = "mysql://<username>:<password>@<host>:<port>/<database_name>"
 }
 
 model Document {
