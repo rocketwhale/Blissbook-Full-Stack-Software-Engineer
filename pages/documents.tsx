@@ -17,25 +17,38 @@ const DOCUMENTS_QUERY = gql`
 
 function DocumentsPage() {
   const [search, setSearch] = useState("");
-  const [debounseSearch, setDebounceSearch] = useState("");
+  const [debounceSearch, setDebounceSearch] = useState("");
   const [showArchived, setShowArchived] = useState(false);
   const { data } = useQuery(DOCUMENTS_QUERY, {
     variables: { search, showArchived },
   });
   const invokeDebounced = useDebounce(
-    () => setSearch(debounseSearch),
+    () => setSearch(debounceSearch),
     300
   );
-  useEffect(invokeDebounced, [debounseSearch]);
+  useEffect(invokeDebounced, [debounceSearch]);
+  useEffect(() => {
+    document.title = 'Documents - Blissbook Full-Stack Product Engineer';
+  }, []);
+
+  const documentRows = data?.documents.map((document: DocumentShape) => (
+    <Table.Tr
+      key={document.id}
+    >
+      <Table.Td>{document.id}</Table.Td>
+      <Table.Td>{document.name}</Table.Td>
+      <Table.Td>{String(document.lastPublishedAt || '-')}</Table.Td>
+    </Table.Tr>
+  ));
 
   return (
-    <div className="flex flex-col gap-2 container mx-auto py-4">
-      <div className="flex items-center gap-2">
+    <div className="flex flex-col gap-2 h-full w-full py-4">
+      <div className="flex items-center gap-2 px-2">
         <TextInput
           className="w-48"
           onChange={(event) => setDebounceSearch(event.currentTarget.value)}
           placeholder="Search documents"
-          value={debounseSearch}
+          value={debounceSearch}
         />
 
         <Checkbox
@@ -45,18 +58,22 @@ function DocumentsPage() {
           }}
         />
       </div>
-
-      <Table
-        data={{
-          head: ["ID", "Name", "Last Published"],
-          body: data?.documents.map((document: DocumentShape) => [
-            document.id,
-            document.name,
-            document.lastPublishedAt || '-',
-          ]),
-        }}
-        highlightOnHover
-      />
+      
+      <div className="block overflow-y-auto h-full w-full">
+        <Table
+          className="w-full"
+          highlightOnHover 
+        >
+          <Table.Thead className="sticky top-0 bg-white">
+            <Table.Tr>
+              <Table.Th>ID</Table.Th>
+              <Table.Th>Name</Table.Th>
+              <Table.Th>Last Published</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{documentRows}</Table.Tbody>
+        </Table>
+      </div>
     </div>
   );
 }
