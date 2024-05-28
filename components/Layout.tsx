@@ -12,6 +12,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Head>
         <title>Blissbook Full-Stack Product Engineer</title>
         <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </Head>
 
       <div className="flex items-center justify-center border-b py-2">

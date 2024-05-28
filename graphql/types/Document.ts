@@ -1,5 +1,5 @@
-import { documents } from "../../data";
 import { builder } from "../builder";
+import { prisma } from '../../lib/prisma'
 import type { PersonShape } from "./Person";
 
 export type DocumentShape = {
@@ -11,7 +11,7 @@ export type DocumentShape = {
   audienceMembers?: PersonShape[];
 };
 
-export const Document = builder.objectRef<DocumentShape>("Document").implement({
+export const Document = builder.prismaObject('Document', {
   fields: (t) => ({
     id: t.exposeInt("id"),
     name: t.exposeString("name"),
@@ -19,15 +19,21 @@ export const Document = builder.objectRef<DocumentShape>("Document").implement({
       type: "Date",
       nullable: true,
     }),
+    lastPublishedAt: t.expose("lastPublishedAt", {
+      type: "Date",
+      nullable: true,
+    }),
     archivedAt: t.expose("archivedAt", {
       type: "Date",
       nullable: true,
     }),
-  }),
+    audienceMembers: t.relation('audienceMembers'),
+  })
 });
 
 builder.queryField("documents", (t) =>
-  t.field({
+  t.prismaField({
+    type: [Document],
     args: {
       search: t.arg({
         type: "String",
@@ -35,13 +41,28 @@ builder.queryField("documents", (t) =>
       showArchived: t.arg({
         type: "Boolean",
       }),
+      skip: t.arg.int(),
+      take: t.arg.int(),
     },
-    type: [Document],
-    resolve: (_, { search, showArchived }) => {
-      let results = documents;
-      if (search) results = results.filter((h) => h.name.includes(search));
-      if (!showArchived) results = results.filter((h) => !h.archivedAt);
-      return results;
+    resolve: (query, parent, args) => {
+      const and: { 'AND'?: any[] } = {};
+      if (args.search) {
+        and.AND ??= [];
+        and.AND.push({ name: { contains: args.search } });
+      }
+      if (!args.showArchived) {
+        and.AND ??= [];
+        and.AND.push({ archivedAt: {equals: null} });
+      }
+
+      const myQuery =
+      {
+        ...query,
+        where: { ...and, },
+        take: args.take ?? 100,
+        skip: args.skip ?? 0,
+      };
+      return prisma.document.findMany(myQuery);
     },
   }),
 );
