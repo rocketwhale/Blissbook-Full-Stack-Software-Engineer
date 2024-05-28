@@ -7,12 +7,13 @@ describe("documents", () => {
   async function getDocuments(
     variables: {
       search?: string;
+      showArchived?: boolean;
     } = {},
   ) {
     const result = await executor({
       document: parse(`
-        query documents ($search: String) {
-          documents (search: $search) {
+        query documents ($search: String, $showArchived: Boolean) {
+          documents (search: $search, showArchived: $showArchived) {
             id
             name
           }
@@ -34,5 +35,13 @@ describe("documents", () => {
       search: "Addendum",
     });
     expect(documents.length).toEqual(66);
+  });
+
+  test("return archived documents with search", async () => {
+    const documents = await getDocuments({
+      search: "ha",
+      showArchived: true,
+    });
+    expect(documents.length).toEqual(4);
   });
 });
