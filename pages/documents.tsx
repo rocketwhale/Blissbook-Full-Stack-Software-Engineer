@@ -5,8 +5,8 @@ import { Checkbox, Table, TextInput } from "@mantine/core";
 import { useState } from "react";
 
 const DOCUMENTS_QUERY = gql`
-  query documents ($search: String) {
-    documents (search: $search) {
+  query documents ($search: String, $showArchived: Boolean) {
+    documents (search: $search, showArchived: $showArchived) {
       id
       name
     }
