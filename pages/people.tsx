@@ -1,12 +1,12 @@
 import type { PersonShape } from "@/graphql/types";
 import { gql, useQuery } from "@apollo/client";
-import { Table, TextInput } from "@mantine/core";
+import { Table, TextInput, Image } from "@mantine/core";
 import { useState } from "react";
 
 const PEOPLE_QUERY = gql`
   query people ($search: String) {
     people (search: $search) {
-      id
+      image
       fullName
     }
   }
@@ -31,9 +31,9 @@ function PeoplePage() {
 
       <Table
         data={{
-          head: ["ID", "Full Name"],
+          head: ["Image", "Full Name"],
           body: data?.people.map((person: PersonShape) => [
-            person.id,
+            <Image src={person.image} className="max-w-16" />,
             person.fullName,
           ]),
         }}

@@ -3,12 +3,14 @@ import { builder } from "../builder";
 
 export type PersonShape = {
   id: number;
+  image: string;
   fullName: string;
 };
 
 export const Person = builder.objectRef<PersonShape>("Person").implement({
   fields: (t) => ({
     id: t.exposeInt("id"),
+    image: t.exposeString("image"),
     fullName: t.exposeString("fullName"),
   }),
 });

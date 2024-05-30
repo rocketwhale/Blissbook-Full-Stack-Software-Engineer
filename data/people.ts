@@ -19,6 +19,7 @@ export const people: PersonShape[] = Array.from(simpsonsByName.values()).map(
 
     return {
       id: index + 1,
+      image: json.image,
       fullName: `${json.character}`,
       metadata: {
         country: country.name,
