@@ -23,7 +23,7 @@ builder.queryField("people", (t) =>
     type: [Person],
     resolve: (_, { search }) => {
       let results = people;
-      if (search) results = results.filter((h) => h.fullName.includes(search));
+      if (search) results = results.filter((h) => h.fullName.toLowerCase().includes(search.toLowerCase()));
       return results;
     },
   }),

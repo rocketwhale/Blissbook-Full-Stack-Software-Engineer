@@ -39,7 +39,7 @@ builder.queryField("documents", (t) =>
     type: [Document],
     resolve: (_, { search, showArchived }) => {
       let results = documents;
-      if (search) results = results.filter((h) => h.name.includes(search));
+      if (search) results = results.filter((h) => h.name.toLowerCase().includes(search.toLowerCase()));
       if (!showArchived) results = results.filter((h) => !h.archivedAt);
       return results;
     },
