@@ -9,6 +9,7 @@ const DOCUMENTS_QUERY = gql`
     documents (search: $search, showArchived: $showArchived) {
       id
       name
+      lastPublishedAt
     }
   }
 `;
@@ -38,10 +39,11 @@ function DocumentsPage() {
 
       <Table
         data={{
-          head: ["ID", "Name"],
+          head: ["ID", "Name", "Last Published"],
           body: data?.documents.map((document: DocumentShape) => [
             document.id,
             document.name,
+            document.lastPublishedAt
           ]),
         }}
         highlightOnHover

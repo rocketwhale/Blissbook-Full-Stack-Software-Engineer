@@ -19,6 +19,10 @@ export const Document = builder.objectRef<DocumentShape>("Document").implement({
       type: "Date",
       nullable: true,
     }),
+    lastPublishedAt: t.expose("lastPublishedAt", {
+      type: "Date",
+      nullable: true,
+    }),
     archivedAt: t.expose("archivedAt", {
       type: "Date",
       nullable: true,
