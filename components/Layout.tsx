@@ -25,7 +25,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       <div className="border-b">
         <div className="flex items-center gap-4 container mx-auto py-2">
-          <Link className={`text-blue-500 ${pathname === "/documents" ? 'underline' : ''}`} href="/documents">
+          <Link className={`text-blue-500 ${pathname === "/documents" || pathname === "/" ? 'underline' : ''}`} href="/documents">
             Documents
           </Link>
           <Link className={`text-blue-500 ${pathname === "/people" ? 'underline' : ''}`} href="/people">
