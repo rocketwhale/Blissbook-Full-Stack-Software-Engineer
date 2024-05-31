@@ -1,4 +1,6 @@
 -- Rough mock of taking the TS types and making tables from the relationships
+-- NOTE: this wasn't updated after-the-fact to account for changes to e.g.
+-- displaying images for people, etc
 
 CREATE TABLE documents (
   id INT AUTO_INCREMENT PRIMARY KEY,

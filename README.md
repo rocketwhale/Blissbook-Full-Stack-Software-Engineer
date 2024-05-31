@@ -4,6 +4,7 @@
 
 Run the following commands
 ```
+  nvm install
   npm i
   npm run dev
 ```
