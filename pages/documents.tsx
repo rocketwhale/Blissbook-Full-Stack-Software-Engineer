@@ -47,6 +47,7 @@ function DocumentsPage() {
           ]),
         }}
         highlightOnHover
+        stickyHeader
       />
     </div>
   );

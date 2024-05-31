@@ -38,6 +38,7 @@ function PeoplePage() {
           ]),
         }}
         highlightOnHover
+        stickyHeader
       />
     </div>
   );
