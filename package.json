@@ -17,6 +17,7 @@
     "@pothos/core": "3.24.0",
     "@pothos/plugin-relay": "3.32.0",
     "@pothos/plugin-simple-objects": "^3.7.0",
+    "@uidotdev/usehooks": "^2.4.1",
     "aws-sdk": "2.1295.0",
     "country-state-city": "^3.2.1",
     "date-fns": "^3.6.0",

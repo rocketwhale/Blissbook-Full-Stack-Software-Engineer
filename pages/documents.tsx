@@ -3,6 +3,7 @@ import type { DocumentShape } from "@/graphql/types";
 import { gql, useQuery } from "@apollo/client";
 import { Checkbox, Table, TextInput } from "@mantine/core";
 import { useState } from "react";
+import { useDebounce } from "@uidotdev/usehooks";
 
 const DOCUMENTS_QUERY = gql`
   query documents ($search: String, $showArchived: Boolean) {
@@ -16,9 +17,10 @@ const DOCUMENTS_QUERY = gql`
 
 function DocumentsPage() {
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 250)
   const [showArchived, setShowArchived] = useState(false);
   const { data } = useQuery(DOCUMENTS_QUERY, {
-    variables: { search, showArchived },
+    variables: { search: debouncedSearch, showArchived },
   });
 
   return (

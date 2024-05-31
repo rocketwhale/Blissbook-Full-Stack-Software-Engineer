@@ -1,6 +1,7 @@
 import type { PersonShape } from "@/graphql/types";
 import { gql, useQuery } from "@apollo/client";
 import { Table, TextInput, Image } from "@mantine/core";
+import { useDebounce } from "@uidotdev/usehooks";
 import { useState } from "react";
 
 const PEOPLE_QUERY = gql`
@@ -14,8 +15,9 @@ const PEOPLE_QUERY = gql`
 
 function PeoplePage() {
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 250)
   const { data } = useQuery(PEOPLE_QUERY, {
-    variables: { search },
+    variables: { search: debouncedSearch },
   });
 
   return (
