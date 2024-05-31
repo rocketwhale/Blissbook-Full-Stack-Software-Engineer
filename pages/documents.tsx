@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 import { Checkbox, Table, TextInput } from "@mantine/core";
 import { useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
+import Head from "next/head";
 
 const DOCUMENTS_QUERY = gql`
   query documents ($search: String, $showArchived: Boolean) {
@@ -25,6 +26,9 @@ function DocumentsPage() {
 
   return (
     <div className="flex flex-col gap-2 container mx-auto py-4">
+      <Head>
+        <title>Documents | Blissbook Full-Stack Product Engineer</title>
+      </Head>
       <div className="flex items-center gap-2">
         <TextInput
           className="w-48"

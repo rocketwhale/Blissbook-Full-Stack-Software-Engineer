@@ -2,6 +2,7 @@ import type { PersonShape } from "@/graphql/types";
 import { gql, useQuery } from "@apollo/client";
 import { Table, TextInput, Image } from "@mantine/core";
 import { useDebounce } from "@uidotdev/usehooks";
+import Head from "next/head";
 import { useState } from "react";
 
 const PEOPLE_QUERY = gql`
@@ -22,6 +23,9 @@ function PeoplePage() {
 
   return (
     <div className="flex flex-col gap-2 container mx-auto py-4">
+      <Head>
+        <title>People | Blissbook Full-Stack Product Engineer</title>
+      </Head>
       <div className="flex items-center gap-2">
         <TextInput
           className="w-48"
